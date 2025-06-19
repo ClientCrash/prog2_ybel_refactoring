@@ -1,18 +1,24 @@
 package refactoring;
 
+/**
+ * Represents an electric bike with battery, gear system and maximum speed.
+ */
 public class EBike extends Bike {
 
-    public int maxSpeed;
-    public int rearGearsCount;
-    public int frontGearsCount;
+    private int maxSpeed;
+    private int rearGearsCount;
+    private int frontGearsCount;
 
-    public EBike(String pn, double p, int ms, int rgc, int fgc, int bc) {
-        productName = pn;
-        price = p;
-        maxSpeed = ms;
-        rearGearsCount = rgc;
-        frontGearsCount = fgc;
-        batteryCapacity = bc;
+    /**
+     * Creates a new electric bike.
+     */
+    public EBike(String productName, double price, int maxSpeed, int rearGearsCount, int frontGearsCount, int batteryCapacity) {
+        setProductName(productName);
+        setPrice(price);
+        setBatteryCapacity(batteryCapacity);
+        this.maxSpeed = maxSpeed;
+        this.rearGearsCount = rearGearsCount;
+        this.frontGearsCount = frontGearsCount;
     }
 
     public int getMaxSpeed() {

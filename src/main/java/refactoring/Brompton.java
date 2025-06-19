@@ -1,17 +1,23 @@
 package refactoring;
 
+/**
+ * Represents a Brompton folding bike with gear system and maximum speed.
+ */
 public class Brompton extends Bike {
 
-    public int maxSpeed;
-    public int rearGearsCount;
-    public int frontGearsCount;
+    private int maxSpeed;
+    private int rearGearsCount;
+    private int frontGearsCount;
 
-    public Brompton(String pn, double p, int ms, int rgc, int fgc) {
-        productName = pn;
-        price = p;
-        maxSpeed = ms;
-        rearGearsCount = rgc;
-        frontGearsCount = fgc;
+    /**
+     * Creates a new Brompton folding bike.
+     */
+    public Brompton(String productName, double price, int maxSpeed, int rearGearsCount, int frontGearsCount) {
+        setProductName(productName);
+        setPrice(price);
+        this.maxSpeed = maxSpeed;
+        this.rearGearsCount = rearGearsCount;
+        this.frontGearsCount = frontGearsCount;
     }
 
     public int getMaxSpeed() {
