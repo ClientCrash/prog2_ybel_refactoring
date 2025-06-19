@@ -24,8 +24,8 @@ public class BikeShopTest {
 
     @Test
     void testMountainbikeBasics() {
-        assertEquals("Mountain Explorer", mountainbike.productName);
-        assertEquals(800.0, mountainbike.price);
+        assertEquals("Mountain Explorer", mountainbike.getProductName());
+        assertEquals(800.0, mountainbike.getPrice());
         assertEquals(45, mountainbike.getMaxSpeed());
         assertEquals(33, mountainbike.getGearsCount());
         assertNull(mountainbike.getBatteryCapacity());
@@ -33,8 +33,8 @@ public class BikeShopTest {
 
     @Test
     void testEBikeBasics() {
-        assertEquals("E-Power", eBike.productName);
-        assertEquals(1500.0, eBike.price);
+        assertEquals("E-Power", eBike.getProductName());
+        assertEquals(1500.0, eBike.getPrice());
         assertEquals(25, eBike.getMaxSpeed());
         assertEquals(16, eBike.getGearsCount());
         assertEquals(Integer.valueOf(500), eBike.getBatteryCapacity());
@@ -42,8 +42,8 @@ public class BikeShopTest {
 
     @Test
     void testBromptonBasics() {
-        assertEquals("Folding Pro", brompton.productName);
-        assertEquals(1200.0, brompton.price);
+        assertEquals("Folding Pro", brompton.getProductName());
+        assertEquals(1200.0, brompton.getPrice());
         assertEquals(30, brompton.getMaxSpeed());
         assertEquals(6, brompton.getGearsCount());
         assertNull(brompton.getBatteryCapacity());
@@ -52,29 +52,29 @@ public class BikeShopTest {
     @Test
     void testArticleCreation() {
         Article article = new Article(mountainbike, 2);
-        assertEquals(mountainbike, article.bike);
-        assertEquals(2, article.purchaseAmount);
+        assertEquals(mountainbike, article.getBike());
+        assertEquals(2, article.getPurchaseAmount());
     }
 
     @Test
     void testBillCreation() {
-        assertEquals("John Doe", bill.customerName);
-        assertEquals("Johnny", bill.nickname);
-        assertEquals("Main Street", bill.street);
-        assertEquals("123", bill.streetNumber);
-        assertEquals(12345, bill.postalCode);
-        assertEquals(testDate, bill.birthday);
-        assertEquals("john@example.com", bill.email);
-        assertEquals("Sample City", bill.city);
-        assertTrue(bill.articles.isEmpty());
+        assertEquals("John Doe", bill.getCustomerName());
+        assertEquals("Johnny", bill.getNickname());
+        assertEquals("Main Street", bill.getStreet());
+        assertEquals("123", bill.getStreetNumber());
+        assertEquals(12345, bill.getPostalCode());
+        assertEquals(testDate, bill.getBirthday());
+        assertEquals("john@example.com", bill.getEmail());
+        assertEquals("Sample City", bill.getCity());
+        assertTrue(bill.getArticles().isEmpty());
     }
 
     @Test
     void testAddArticleToBill() {
         Article article = new Article(mountainbike, 1);
         assertTrue(bill.addArticle(article));
-        assertEquals(1, bill.articles.size());
-        assertEquals(article, bill.articles.get(0));
+        assertEquals(1, bill.getArticles().size());
+        assertEquals(article, bill.getArticles().get(0));
     }
 
     @Test
