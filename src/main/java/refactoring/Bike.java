@@ -2,13 +2,16 @@ package refactoring;
 
 /**
  * Base class for all bike types.
- * Represents a bike with basic properties like name, price and battery capacity.
+ * Represents a bike with basic properties like name, price, battery capacity, speed and gears.
  */
 public class Bike {
 
     private String productName;
     private double price;
     private Integer batteryCapacity;
+    private int maxSpeed;
+    private int rearGearsCount;
+    private int frontGearsCount;
 
     /**
      * Gets the product name of this bike.
@@ -59,11 +62,59 @@ public class Bike {
     }
 
     /**
+     * Gets the maximum speed of this bike.
+     * @return the maximum speed in km/h
+     */
+    public int getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    /**
+     * Sets the maximum speed of this bike.
+     * @param maxSpeed the maximum speed in km/h
+     */
+    public void setMaxSpeed(int maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    /**
+     * Gets the number of rear gears.
+     * @return the number of rear gears
+     */
+    public int getRearGearsCount() {
+        return rearGearsCount;
+    }
+
+    /**
+     * Sets the number of rear gears.
+     * @param rearGearsCount the number of rear gears
+     */
+    public void setRearGearsCount(int rearGearsCount) {
+        this.rearGearsCount = rearGearsCount;
+    }
+
+    /**
+     * Gets the number of front gears.
+     * @return the number of front gears
+     */
+    public int getFrontGearsCount() {
+        return frontGearsCount;
+    }
+
+    /**
+     * Sets the number of front gears.
+     * @param frontGearsCount the number of front gears
+     */
+    public void setFrontGearsCount(int frontGearsCount) {
+        this.frontGearsCount = frontGearsCount;
+    }
+
+    /**
      * Gets the total number of gears for this bike.
+     * Default implementation multiplies rear and front gears.
      * @return the number of gears
-     * @throws UnsupportedOperationException if not implemented by subclass
      */
     public int getGearsCount() {
-        throw new UnsupportedOperationException("Not Implemented");
+        return rearGearsCount * frontGearsCount;
     }
 }

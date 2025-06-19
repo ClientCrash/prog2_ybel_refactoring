@@ -5,32 +5,19 @@ package refactoring;
  */
 public class Brompton extends Bike {
 
-    private int maxSpeed;
-    private int rearGearsCount;
-    private int frontGearsCount;
-
     /**
      * Creates a new Brompton folding bike.
      */
     public Brompton(String productName, double price, int maxSpeed, int rearGearsCount, int frontGearsCount) {
         setProductName(productName);
         setPrice(price);
-        this.maxSpeed = maxSpeed;
-        this.rearGearsCount = rearGearsCount;
-        this.frontGearsCount = frontGearsCount;
-    }
-
-    public int getMaxSpeed() {
-        return maxSpeed;
+        setMaxSpeed(maxSpeed);
+        setRearGearsCount(rearGearsCount);
+        setFrontGearsCount(frontGearsCount);
     }
 
     @Override
     public Integer getBatteryCapacity() {
         return null;
-    }
-
-    @Override
-    public int getGearsCount() {
-        return rearGearsCount * frontGearsCount;
     }
 }
