@@ -117,64 +117,7 @@ public class Bill {
      * @return the final price after all discounts
      */
     private double calculateArticlePrice(Article article) {
-        double price = calculateBasePrice(article);
-        return applyHighValueDiscount(price);
-    }
-
-    /**
-     * Calculates the base price before high-value discount.
-     * @param article the article to calculate base price for
-     * @return the base price with bike-specific discounts applied
-     */
-    private double calculateBasePrice(Article article) {
-        double price = 0;
-        if (article.getBike() instanceof Brompton) {
-            price = calculateBromptonPrice(article);
-        } else if (article.getBike() instanceof EBike) {
-            price = calculateEBikePrice(article);
-        } else if (article.getBike() instanceof Mountainbike) {
-            price = calculateMountainbikePrice(article);
-        }
-        return price;
-    }
-
-    /**
-     * Calculates price for Brompton bikes (additional bikes at half price).
-     */
-    private double calculateBromptonPrice(Article article) {
-        double price = article.getBike().getPrice() * article.getPurchaseAmount();
-        if (article.getPurchaseAmount() > 1) {
-            price += (article.getPurchaseAmount() - 1) * article.getBike().getPrice() / 2;
-        }
-        return price;
-    }
-
-    /**
-     * Calculates price for EBikes (standard pricing).
-     */
-    private double calculateEBikePrice(Article article) {
-        return article.getBike().getPrice() * article.getPurchaseAmount();
-    }
-
-    /**
-     * Calculates price for Mountainbikes (bulk discount for 3+).
-     */
-    private double calculateMountainbikePrice(Article article) {
-        if (article.getPurchaseAmount() > 2) {
-            return article.getPurchaseAmount() * article.getBike().getPrice() * 9 / 10;
-        } else {
-            return article.getBike().getPrice() * article.getPurchaseAmount();
-        }
-    }
-
-    /**
-     * Applies 20% discount for purchases >= 1000 euros.
-     */
-    private double applyHighValueDiscount(double price) {
-        if (price >= 1000.0) {
-            return price * 0.8;
-        }
-        return price;
+        return article.getBike().calculateTotalPrice(article.getPurchaseAmount());
     }
 
     /**

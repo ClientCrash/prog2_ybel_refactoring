@@ -117,4 +117,38 @@ public class Bike {
     public int getGearsCount() {
         return rearGearsCount * frontGearsCount;
     }
+
+    /**
+     * Calculates the total price for a given purchase amount.
+     * Includes bike-specific discounts and high-value discount.
+     * @param purchaseAmount the number of bikes to purchase
+     * @return the total price after all discounts
+     */
+    public double calculateTotalPrice(int purchaseAmount) {
+        double basePrice = calculateBasePrice(purchaseAmount);
+        return applyHighValueDiscount(basePrice);
+    }
+
+    /**
+     * Calculates the base price before high-value discount.
+     * Default implementation: price * amount (no special discounts).
+     * Override in subclasses for bike-specific pricing.
+     * @param purchaseAmount the number of bikes to purchase
+     * @return the base price
+     */
+    protected double calculateBasePrice(int purchaseAmount) {
+        return price * purchaseAmount;
+    }
+
+    /**
+     * Applies 20% discount for purchases >= 1000 euros.
+     * @param price the base price
+     * @return price after high-value discount
+     */
+    private double applyHighValueDiscount(double price) {
+        if (price >= 1000.0) {
+            return price * 0.8;
+        }
+        return price;
+    }
 }
