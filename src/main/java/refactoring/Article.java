@@ -1,12 +1,28 @@
 package refactoring;
 
+/**
+ * Represents an article with a bike and purchase amount.
+ */
 public class Article {
 
-    public Bike bike;
-    public int purchaseAmount;
+    private Bike bike;
+    private int purchaseAmount;
 
-    public Article(Bike b, int pa) {
-        bike = b;
-        purchaseAmount = pa;
+    /**
+     * Creates a new article.
+     * @param bike the bike
+     * @param purchaseAmount the amount to purchase
+     */
+    public Article(Bike bike, int purchaseAmount) {
+        this.bike = bike;
+        this.purchaseAmount = purchaseAmount;
+    }
+
+    public Bike getBike() {
+        return bike;
+    }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
     }
 }
